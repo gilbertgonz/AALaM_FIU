@@ -1,0 +1,8 @@
+prefix=/home/gilberto/asphalt_ws/install
+
+Name: bboxarray
+Description: Description of bboxarray
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime
