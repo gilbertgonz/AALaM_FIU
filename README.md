@@ -10,3 +10,11 @@ common_msgs (acquire from source)  // this ensures you have all message type dep
 realsense-ros (acquire from source)  // driver for the Intel RealSense Depth Camera
 
 roboclaw (acquire from source)  // driver for the roboclaw motor controller
+
+The launch file for these packages is:
+
+roslaunch yolocamm asphalt_cam_diff.launch
+
+However, the YOLO program is needed to be run seperate because it does not work in the launch file for some reason:
+
+rosrun yolocamm rosified_stop_detect.py 
