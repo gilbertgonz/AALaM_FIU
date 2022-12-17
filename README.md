@@ -3,8 +3,6 @@ Autonomous vehicle for asphalt laying that uses computer vision to detect pothol
 
 Pre-requisites to utlizing the files above are:
 
-Ubuntu 20.04
-
 ROS Kinetic
 
 common_msgs (acquire from source)  // this ensures you have all message type dependencies
