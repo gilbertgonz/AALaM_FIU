@@ -1,5 +1,5 @@
 # Asphalt-Machine
-Autonomous vehicle for asphalt laying that uses computer vision to detect potholes and avoid objects.
+The files seen above have been developed by me (Gilberto Gonzalez) and David Perez for FIU'S Autonomous vehicle for asphalt laying that uses computer vision to detect potholes and avoid objects. 
 
 Pre-requisites to utlizing the files above are:
 
