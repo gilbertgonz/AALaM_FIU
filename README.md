@@ -12,5 +12,3 @@ common_msgs (acquire from source)  // this ensures you have all message type dep
 realsense-ros (acquire from source)  // driver for the Intel RealSense Depth Camera
 
 roboclaw (acquire from source)  // driver for the roboclaw motor controller
-
-usb_cam *optional* (acquire from source)  // driver for a standard usb camera if no access to Intel RealSense Depth Camera
