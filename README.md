@@ -11,10 +11,17 @@ realsense-ros (acquire from source)  // driver for the Intel RealSense Depth Cam
 
 roboclaw (acquire from source)  // driver for the roboclaw motor controller
 
-## The launch file for these packages is:
+## The launch file for these packages (on the base machine) is:
 
 roslaunch yolocamm asphalt_cam_diff.launch
 
 **However, the YOLO program is needed to be run seperate because it does not work in the launch file due to dependency issues:**
 
 rosrun yolocamm rosified_stop_detect.py 
+
+## The launch file for these packages (on the remote machine) is:
+
+roslaunch realsense2_camera rs_camera.launch
+
+roslaunch roboclaw diffdrive.launch 
+
