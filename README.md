@@ -15,6 +15,6 @@ roboclaw (acquire from source)  // driver for the roboclaw motor controller
 
 roslaunch yolocamm asphalt_cam_diff.launch
 
-**However, the YOLO program is needed to be run seperate because it does not work in the launch file for some reason:**
+**However, the YOLO program is needed to be run seperate because it does not work in the launch file due to dependency issues:**
 
 rosrun yolocamm rosified_stop_detect.py 
