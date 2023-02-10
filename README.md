@@ -3,7 +3,7 @@
 
 ## Pre-requisites to utlizing the files above are:
 
-ROS Kinetic
+ROS Noetic
 
 common_msgs (acquire from source)  // this ensures you have all message type dependencies
 
