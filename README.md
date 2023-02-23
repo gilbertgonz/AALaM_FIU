@@ -25,6 +25,6 @@ roslaunch realsense2_camera rs_camera.launch
 
 roslaunch roboclaw diffdrive.launch 
 
-#testing
 
-Adding new feature to avoid obstacle comming soon.
+
+## Adding aboidance feature soon
