@@ -75,7 +75,7 @@ def callback_obs(data):
     
         move.linear.x = speed 
         move.angular.z = speed
-        rospy.loginfo("Avoid obstacle to your right, turn left")
+        rospy.loginfo("Avoid obstacle to your left, turn right")
         step_cmd_vel.publish(move)    
     
     else:
