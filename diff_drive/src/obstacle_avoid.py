@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
 import rospy
-import cv2
 from bboxarray.msg import custom
-from sensor_msgs.msg import CompressedImage, Image
-from cv_bridge import CvBridge 
-import rospy
 from geometry_msgs.msg import Twist
 
 
@@ -19,10 +15,11 @@ def callback_bbox(data):
     
 def callback_obs(data):
     move= Twist()
-    speed = 0.1
+    speed = 0.15
     size = 640
     ranges = 40
-    distance = 800
+    weight = 0.8
+    distance = 1200
     range_plus = (size/2)+ranges
     range_minus = (size/2)-ranges
     r = rospy.Rate(1)
@@ -33,19 +30,20 @@ def callback_obs(data):
 
 
     if tl > distance and tm > distance and tr > distance and l > distance and m > distance and r > distance and br > distance and bm > distance and bl > distance:
-        if x1 != 0 and x2 != 0 and y1 != 0 and y2 != 0:
+        if x1 != 0 and x2 != 0 and y1 != 0 and y2 != 0:     #Target following mode
             if y2 < 475:
                 if x_val > range_plus: # When vehicle is the left of the target
+                    move.linear.x = speed * weight
                     move.angular.z = -speed
                     rospy.loginfo("Twist Right")
                     step_cmd_vel.publish(move)
                 elif x_val < range_minus: # When vehicle is the right of the target
-                    move.angular.x = speed
+                    move.linear.x = speed
                     move.angular.y = speed
                     rospy.loginfo("Twist Left")
                     step_cmd_vel.publish(move)
                 elif range_minus < x_val <range_plus:
-                    move.linear.x = speed
+                    move.linear.x = speed * weight
                     rospy.loginfo("Twist Forward")
                     step_cmd_vel.publish(move)
                 else:
@@ -58,8 +56,30 @@ def callback_obs(data):
                 step_cmd_vel.publish(move)
         else:
             move.linear.x = 0
+            move.angular.z = 0
             rospy.loginfo("No target detected")
             step_cmd_vel.publish(move)
+    elif tl < distance  or l < distance or bl < distance:
+        move.linear.x = speed 
+        move.angular.z = -speed
+        rospy.loginfo("Avoid obstacle to your left, turn right")
+        step_cmd_vel.publish(move)    
+    elif tr < distance or r < distance or br < distance:
+        move.linear.x = speed 
+        move.angular.z = speed
+        rospy.loginfo("Avoid obstacle to your right, turn left")
+        step_cmd_vel.publish(move)
+    elif tm < distance  or m < distance or bm < distance:
+        if tl < distance  or l < distance or bl < distance:
+            move.linear.x = speed 
+            move.angular.z = -speed
+            rospy.loginfo("Avoid obstacle in the middle, turn right")
+            step_cmd_vel.publish(move)  
+        if tr < distance or r < distance or br < distance:
+            move.linear.x = speed 
+            move.angular.z = speed
+            rospy.loginfo("Avoid obstacle in the middle, turn left")
+            step_cmd_vel.publish(move)    
     else:
         move.linear.x = 0
         rospy.loginfo("Nearby object detected!")
