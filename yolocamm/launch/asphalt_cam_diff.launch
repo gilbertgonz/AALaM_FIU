@@ -1,5 +1,5 @@
 <launch>
   <node name="obstacle_detect" pkg="target_depth" type="obstacle_detect.py" output="screen"/>
   <node name="target_distance" pkg="target_depth" type="detect_dist.py" output="screen"/>
-  <node name="diff_drive" pkg="diff_drive" type="timer_qa3.py" output="screen"/>
+  <node name="diff_drive" pkg="diff_drive" type="obstacle_avoid.py" output="screen"/>
 </launch>
