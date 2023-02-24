@@ -59,6 +59,8 @@ def callback_obs(data):
             move.angular.z = 0
             rospy.loginfo("No target detected")
             step_cmd_vel.publish(move)
+
+    ### Implementing a similar concept to the Braitenburg algorithm if there is objects to the right, left, or middle ###
     elif tl < distance  or l < distance or bl < distance:
         move.linear.x = speed 
         move.angular.z = -speed
