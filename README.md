@@ -25,4 +25,4 @@ roslaunch realsense2_camera rs_camera.launch
 
 roslaunch roboclaw diffdrive.launch 
 
-## Adding aboidance feature soon
+## Adding avoidance feature soon
